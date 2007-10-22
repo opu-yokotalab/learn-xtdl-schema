@@ -1,0 +1,37 @@
+start = xtdlElement
+xtdlElement = element xtdl { sectionElement+ }
+sectionElement =
+  element section {
+    attribute id { ID.datatype }?,
+    attribute title { text }?,
+    (sectionElement*
+     & exampleElement*
+     & definitionElement*
+     & explanationElement*
+     & examinationElement*
+     & illustrationElement*
+     & programElement*
+     & algorithmElement*
+     & proofElement*
+     & simulationElement*)
+  }
+exampleElement = element example { elementBody }
+definitionElement = element definition { elementBody }
+explanationElement = element explanation { elementBody }
+examinationElement = element examination { elementBody }
+illustrationElement = element illustration { elementBody }
+programElement = element program { elementBody }
+algorithmElement = element algorithm { elementBody }
+proofElement = element proof { elementBody }
+simulationElement = element simulation { elementBody }
+elementBody = Common.attrib, Block.model
+include "datatypes.rng.rnc"
+include "attribs.rng.rnc"
+include "text.rng.rnc"
+include "list.rng.rnc"
+include "basic-table.rng.rnc"
+include "image.rng.rnc"
+include "param.rng.rnc"
+include "object.rng.rnc"
+include "link.rng.rnc"
+include "base.rng.rnc"
