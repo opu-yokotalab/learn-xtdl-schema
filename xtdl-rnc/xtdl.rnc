@@ -1,0 +1,44 @@
+default namespace = ""
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace java = "http://www.relaxer.org/xmlns/relaxer/java"
+namespace relaxer = "http://www.relaxer.org/xmlns/relaxer"
+namespace sql = "http://www.relaxer.org/xmlns/relaxer/sql"
+
+start = xtdl
+xtdl = element xtdl { section }
+section = element section { common.attlist, section.content }
+example = element example { common.attlist, common.content }
+definition = element definition { common.attlist, common.content }
+explanation = element explanation { common.attlist, common.content }
+examination = element examination { common.attlist, common.content }
+illustration = element illustration { common.attlist, common.content }
+program = element program { common.attlist, common.content }
+algorithm = element algorithm { common.attlist, common.content }
+proof = element proof { common.attlist, common.content }
+simulation = element simulation { common.attlist, common.content }
+common.attlist =
+  attribute id { ID.datatype },
+  attribute title { text }?,
+  attribute metadata { text }?
+common.content = Block.model
+section.content =
+  section*
+  & example*
+  & definition*
+  & explanation*
+  & examination*
+  & illustration*
+  & program*
+  & algorithm*
+  & proof*
+  & simulation*
+include "datatypes.rnc"
+include "attribs.rnc"
+include "text.rnc"
+include "hypertext.rnc"
+include "list.rnc"
+include "table.rnc"
+include "image.rnc"
+include "param.rnc"
+include "link.rnc"
+include "base.rnc"
